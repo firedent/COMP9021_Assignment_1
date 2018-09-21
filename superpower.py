@@ -23,25 +23,31 @@ list_hero_power_sorted = sorted(list_hero_power)
 n = nb_of_switches
 sum_q1 = 0
 past = 0
-for i in list_hero_power_sorted:
-    if n > 0:
-        if i < 0:
-            sum_q1 = sum_q1 + i*-1
-            n -= 1
-        elif i == 0:
-            n = 0
-        elif n % 2 == 0:
-            sum_q1 = sum_q1 + i
-            n = 0
-        elif past*-1 > i:
-            sum_q1 = sum_q1 - i
-            n = 0
-        else:
-            sum_q1 = sum_q1 + i + past
-            n = 0
+if len(list_hero_power_sorted) == 1:
+    if n%2 == 0:
+        sum_q1 = list_hero_power_sorted[0]
     else:
-        sum_q1 = sum_q1 + i
-    past = i
+        sum_q1 = -1 * list_hero_power_sorted[0]
+else:
+    for i in list_hero_power_sorted:
+        if n > 0:
+            if i < 0:
+                sum_q1 = sum_q1 + i*-1
+                n -= 1
+            elif i == 0:
+                n = 0
+            elif n % 2 == 0:
+                sum_q1 = sum_q1 + i
+                n = 0
+            elif past*-1 > i:
+                sum_q1 = sum_q1 - i
+                n = 0
+            else:
+                sum_q1 = sum_q1 + i + 2*past
+                n = 0
+        else:
+            sum_q1 = sum_q1 + i
+        past = i
 
 # 第二问
 sum_q2 = 0
