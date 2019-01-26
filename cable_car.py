@@ -13,7 +13,6 @@ except FileNotFoundError:
     sys.exit()
 
 text = ''.join(line.replace('\n', ' ') for line in lines)
-print(text)
 
 try:
     # 字符转换成整数
@@ -28,7 +27,6 @@ try:
     #数列大于等于2
     if len(list_pillars) < 2:
         raise ValueError
-    print(list_pillars)
 except ValueError:
     print('Sorry, input file does not store valid data.')
     sys.exit()
